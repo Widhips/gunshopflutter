@@ -1,0 +1,61 @@
+appId: com.gunshop.gun_shop_wms
+info:
+  title: Login Sukses & Navigasi Tab Dashboard
+  description: Pengujian alur sukses login akun Admin dan verifikasi navigasi 4 tab utama (Dashboard, Inventaris, Scan QR, Profil).
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Masuk ke akun Anda"
+    timeout: 15000
+- assertVisible: "Masuk ke akun Anda"
+
+# Input kredensial login Admin
+- tapOn: "Email"
+- inputText: "admin@gunshop.com"
+- tapOn: "Password"
+- inputText: "admin123"
+- hideKeyboard
+- tapOn: "Masuk"
+
+# Verifikasi elemen di Dashboard Admin
+- extendedWaitUntil:
+    visible: "Dashboard Admin"
+    timeout: 15000
+- assertVisible: "Dashboard Admin"
+- assertVisible: "Selamat Datang.*"
+- assertVisible: "Jenis Barang"
+- assertVisible: "Total Stok"
+- assertVisible: "Kategori"
+- assertVisible: "Aksi Cepat"
+
+# Cek navigasi ke Tab Inventaris
+- tapOn: "Inventaris"
+- extendedWaitUntil:
+    visible: "Daftar Inventaris"
+    timeout: 10000
+- assertVisible: "Daftar Inventaris"
+- assertVisible: "Cari nama atau kode barang..."
+
+# Cek navigasi ke Tab Scan QR
+- tapOn: "Scan QR"
+- extendedWaitUntil:
+    visible: "Scan QR Code"
+    timeout: 10000
+- assertVisible: "Scan QR Code"
+
+# Cek navigasi ke Tab Profil
+- tapOn: "Profil"
+- extendedWaitUntil:
+    visible: "Profil"
+    timeout: 10000
+- assertVisible: "Profil"
+- assertVisible: "Admin.*"
+- assertVisible: "Logout"
+
+# Kembali ke Tab Dashboard
+- tapOn: "Dashboard"
+- extendedWaitUntil:
+    visible: "Dashboard Admin"
+    timeout: 10000
+- assertVisible: "Dashboard Admin"

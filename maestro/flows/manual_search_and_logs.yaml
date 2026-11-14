@@ -1,0 +1,84 @@
+appId: com.gunshop.gun_shop_wms
+info:
+  title: Pencarian Manual SKU & Riwayat Aktivitas
+  description: Pengujian fitur Pencarian Manual barang via kode SKU/UUID, pengecekan audit trail pada Riwayat Aktivitas, serta logout akun.
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Masuk ke akun Anda"
+    timeout: 15000
+
+# Login Admin
+- tapOn: "Email"
+- inputText: "admin@gunshop.com"
+- tapOn: "Password"
+- inputText: "admin123"
+- hideKeyboard
+- tapOn: "Masuk"
+
+# 1. Buka Fitur Cari Manual dari Aksi Cepat Dashboard
+- extendedWaitUntil:
+    visible: "Dashboard Admin"
+    timeout: 15000
+- assertVisible: "Cari Manual"
+- tapOn: "Cari Manual"
+
+- extendedWaitUntil:
+    visible: "Pencarian Manual"
+    timeout: 10000
+- assertVisible: "Masukkan ID atau Kode Barang"
+
+# Masukkan kode SKU barang dan lakukan pencarian
+- tapOn: "Contoh: GUN-001 atau UUID"
+- inputText: "HG-001"
+- hideKeyboard
+- tapOn: "Cari"
+
+# Verifikasi hasil pencarian ditemukan
+- extendedWaitUntil:
+    visible: "HG-001.*"
+    timeout: 10000
+- assertVisible: "HG-001.*"
+
+# Buka detail barang dari hasil pencarian manual
+- tapOn: "HG-001.*"
+- extendedWaitUntil:
+    visible: "Detail Barang"
+    timeout: 10000
+- assertVisible: "Detail Barang"
+
+# Kembali ke Dashboard
+- back
+- back
+- assertVisible: "Dashboard Admin"
+
+# 2. Cek Riwayat Aktivitas (Audit Trail)
+- tapOn: "Riwayat"
+- extendedWaitUntil:
+    visible: "Riwayat Aktivitas"
+    timeout: 10000
+- assertVisible: "Riwayat Aktivitas"
+
+# Kembali ke Dashboard
+- back
+- assertVisible: "Dashboard Admin"
+
+# 3. Pengujian Logout dari Tab Profil
+- tapOn: "Profil"
+- extendedWaitUntil:
+    visible: "Profil"
+    timeout: 10000
+- tapOn: "Logout"
+
+# Konfirmasi dialog logout
+- extendedWaitUntil:
+    visible: "Apakah Anda yakin ingin keluar?"
+    timeout: 5000
+- tapOn: "Logout"
+
+# Verifikasi kembali ke layar login
+- extendedWaitUntil:
+    visible: "Masuk ke akun Anda"
+    timeout: 10000
+- assertVisible: "Masuk ke akun Anda"

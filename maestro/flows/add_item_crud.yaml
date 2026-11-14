@@ -1,0 +1,64 @@
+appId: com.gunshop.gun_shop_wms
+info:
+  title: Tambah Data Inventaris (Admin CRUD)
+  description: Pengujian alur penambahan barang baru oleh Admin melalui menu Aksi Cepat, validasi field wajib, hingga penyimpanan data.
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Masuk ke akun Anda"
+    timeout: 15000
+
+# Login Admin
+- tapOn: "Email"
+- inputText: "admin@gunshop.com"
+- tapOn: "Password"
+- inputText: "admin123"
+- hideKeyboard
+- tapOn: "Masuk"
+
+# Buka form Tambah Barang dari Aksi Cepat
+- extendedWaitUntil:
+    visible: "Dashboard Admin"
+    timeout: 15000
+- assertVisible: "Tambah Barang"
+- tapOn: "Tambah Barang"
+
+# Verifikasi halaman Tambah Barang
+- extendedWaitUntil:
+    visible: "Tambah Barang"
+    timeout: 10000
+- assertVisible: "Nama Barang *"
+- assertVisible: "Kode Barang (SKU) *"
+- assertVisible: "Simpan Barang"
+
+# 1. Validasi error form kosong
+- tapOn: "Simpan Barang"
+- assertVisible: "Nama barang wajib diisi"
+
+# 2. Input data barang baru
+- tapOn: "Nama Barang *"
+- inputText: "Sig Sauer P226 Legion"
+
+- tapOn: "Kode Barang (SKU) *"
+- inputText: "HG-999"
+
+- tapOn: "Deskripsi"
+- inputText: "Pistol taktis 9mm edisi Legion khusus kolektor"
+
+- tapOn: "Jumlah Stok *"
+- eraseText: 5
+- inputText: "10"
+
+- tapOn: "Lokasi Penyimpanan"
+- inputText: "Rak A-09"
+- hideKeyboard
+
+# 3. Simpan barang
+- tapOn: "Simpan Barang"
+
+# Verifikasi berhasil kembali ke Dashboard
+- extendedWaitUntil:
+    visible: "Dashboard Admin"
+    timeout: 15000
+- assertVisible: "Dashboard Admin"

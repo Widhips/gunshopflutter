@@ -1,0 +1,71 @@
+appId: com.gunshop.gun_shop_wms
+info:
+  title: Pencarian Inventaris & Detail Barang
+  description: Pengujian pencarian real-time pada daftar inventaris, scroll daftar, membuka detail spesifikasi barang, serta verifikasi QR Code generator.
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Masuk ke akun Anda"
+    timeout: 15000
+
+# Login Admin
+- tapOn: "Email"
+- inputText: "admin@gunshop.com"
+- tapOn: "Password"
+- inputText: "admin123"
+- hideKeyboard
+- tapOn: "Masuk"
+
+# Tunggu dashboard dan navigasi ke tab Inventaris
+- extendedWaitUntil:
+    visible: "Dashboard Admin"
+    timeout: 15000
+- tapOn: "Inventaris"
+- extendedWaitUntil:
+    visible: "Daftar Inventaris"
+    timeout: 10000
+- assertVisible: "Daftar Inventaris"
+
+# Pengujian scroll pada list inventaris
+- swipe:
+    direction: UP
+- swipe:
+    direction: DOWN
+
+# Pencarian barang secara real-time
+- tapOn: "Cari nama atau kode barang..."
+- inputText: "Glock"
+- hideKeyboard
+
+# Buka barang hasil pencarian
+- extendedWaitUntil:
+    visible: "Glock.*"
+    timeout: 10000
+- tapOn: "Glock.*"
+
+# Verifikasi halaman Detail Barang
+- extendedWaitUntil:
+    visible: "Detail Barang"
+    timeout: 10000
+- assertVisible: "Detail Barang"
+- assertVisible: "ID Barang"
+- assertVisible: "Kode Barang (SKU)"
+- assertVisible: "Kategori"
+- assertVisible: "Stok"
+- assertVisible: "Lokasi Penyimpanan"
+- assertVisible: "Lihat QR Code"
+
+# Verifikasi QR Code Generator Screen
+- tapOn: "Lihat QR Code"
+- extendedWaitUntil:
+    visible: "QR Code Barang"
+    timeout: 10000
+- assertVisible: "QR Code Barang"
+- assertVisible: "Bagikan QR"
+
+# Kembali ke halaman sebelumnya
+- back
+- assertVisible: "Detail Barang"
+- back
+- assertVisible: "Daftar Inventaris"

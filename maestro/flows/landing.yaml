@@ -1,0 +1,36 @@
+appId: com.gunshop.gun_shop_wms
+info:
+  title: Landing & Validasi Form Login
+  description: Pengujian verifikasi tampilan awal (splash & login) serta validasi form login (email kosong, format email salah, password minimal 6 karakter).
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Masuk ke akun Anda"
+    timeout: 15000
+- assertVisible: "Gun Shop WMS"
+- assertVisible: "Masuk ke akun Anda"
+- assertVisible: "Email"
+- assertVisible: "Password"
+- assertVisible: "Masuk"
+
+# 1. Validasi Error: Tap Masuk tanpa input email & password
+- tapOn: "Masuk"
+- assertVisible: "Email tidak boleh kosong"
+
+# 2. Validasi Error: Format email tidak valid (tanpa @)
+- tapOn: "Email"
+- inputText: "adminbukanemail"
+- hideKeyboard
+- tapOn: "Masuk"
+- assertVisible: "Format email tidak valid"
+
+# 3. Validasi Error: Password kurang dari 6 karakter
+- tapOn: "Email"
+- eraseText: 20
+- inputText: "admin@gunshop.com"
+- tapOn: "Password"
+- inputText: "123"
+- hideKeyboard
+- tapOn: "Masuk"
+- assertVisible: "Password minimal 6 karakter"
