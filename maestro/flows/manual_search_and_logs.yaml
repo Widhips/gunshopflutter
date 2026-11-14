@@ -13,7 +13,7 @@ info:
 - tapOn: "Email"
 - inputText: "admin@gunshop.com"
 - tapOn: "Password"
-- inputText: "admin123"
+- inputText: "admingunshop123"
 - hideKeyboard
 - tapOn: "Masuk"
 
@@ -42,13 +42,15 @@ info:
 - assertVisible: "HG-001.*"
 
 # Buka detail barang dari hasil pencarian manual
-- tapOn: "HG-001.*"
+- tapOn: "G\nGlock.*"
+
 - extendedWaitUntil:
     visible: "Detail Barang"
     timeout: 10000
 - assertVisible: "Detail Barang"
 
 # Kembali ke Dashboard
+- back
 - back
 - back
 - assertVisible: "Dashboard Admin"
@@ -65,7 +67,7 @@ info:
 - assertVisible: "Dashboard Admin"
 
 # 3. Pengujian Logout dari Tab Profil
-- tapOn: "Profil"
+- tapOn: "Profil\nTab 4 of 4"
 - extendedWaitUntil:
     visible: "Profil"
     timeout: 10000

@@ -13,7 +13,7 @@ info:
 - tapOn: "Email"
 - inputText: "admin@gunshop.com"
 - tapOn: "Password"
-- inputText: "admin123"
+- inputText: "admingunshop123"
 - hideKeyboard
 - tapOn: "Masuk"
 
@@ -21,7 +21,7 @@ info:
 - extendedWaitUntil:
     visible: "Dashboard Admin"
     timeout: 15000
-- tapOn: "Inventaris"
+- tapOn: "Inventaris\nTab 2 of 4"
 - extendedWaitUntil:
     visible: "Daftar Inventaris"
     timeout: 10000
@@ -40,10 +40,9 @@ info:
 
 # Buka barang hasil pencarian
 - extendedWaitUntil:
-    visible: "Glock.*"
+    visible: "G\nGlock.*"
     timeout: 10000
-- tapOn: "Glock.*"
-
+- tapOn: "G\nGlock.*"
 # Verifikasi halaman Detail Barang
 - extendedWaitUntil:
     visible: "Detail Barang"
@@ -59,10 +58,10 @@ info:
 # Verifikasi QR Code Generator Screen
 - tapOn: "Lihat QR Code"
 - extendedWaitUntil:
-    visible: "QR Code Barang"
+    visible: "QR Code"
     timeout: 10000
-- assertVisible: "QR Code Barang"
-- assertVisible: "Bagikan QR"
+- assertVisible: "QR Code"
+- assertVisible: "Simpan & Bagikan"
 
 # Kembali ke halaman sebelumnya
 - back

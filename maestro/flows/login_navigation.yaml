@@ -14,7 +14,7 @@ info:
 - tapOn: "Email"
 - inputText: "admin@gunshop.com"
 - tapOn: "Password"
-- inputText: "admin123"
+- inputText: "admingunshop123"
 - hideKeyboard
 - tapOn: "Masuk"
 
@@ -24,13 +24,13 @@ info:
     timeout: 15000
 - assertVisible: "Dashboard Admin"
 - assertVisible: "Selamat Datang.*"
-- assertVisible: "Jenis Barang"
-- assertVisible: "Total Stok"
-- assertVisible: "Kategori"
+- assertVisible: "31\nJenis Barang"
+- assertVisible: "1414\nTotal Stok"
+- assertVisible: "5\nKategori"
 - assertVisible: "Aksi Cepat"
 
 # Cek navigasi ke Tab Inventaris
-- tapOn: "Inventaris"
+- tapOn: "Inventaris\nTab 2 of 4"
 - extendedWaitUntil:
     visible: "Daftar Inventaris"
     timeout: 10000
@@ -38,14 +38,14 @@ info:
 - assertVisible: "Cari nama atau kode barang..."
 
 # Cek navigasi ke Tab Scan QR
-- tapOn: "Scan QR"
+- tapOn: "Scan QR\nTab 3 of 4"
 - extendedWaitUntil:
     visible: "Scan QR Code"
     timeout: 10000
 - assertVisible: "Scan QR Code"
 
 # Cek navigasi ke Tab Profil
-- tapOn: "Profil"
+- tapOn: "Profil\nTab 4 of 4"
 - extendedWaitUntil:
     visible: "Profil"
     timeout: 10000
@@ -54,7 +54,7 @@ info:
 - assertVisible: "Logout"
 
 # Kembali ke Tab Dashboard
-- tapOn: "Dashboard"
+- tapOn: "Dashboard\nTab 1 of 4"
 - extendedWaitUntil:
     visible: "Dashboard Admin"
     timeout: 10000

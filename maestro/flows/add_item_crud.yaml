@@ -13,7 +13,7 @@ info:
 - tapOn: "Email"
 - inputText: "admin@gunshop.com"
 - tapOn: "Password"
-- inputText: "admin123"
+- inputText: "admingunshop123"
 - hideKeyboard
 - tapOn: "Masuk"
 
@@ -30,10 +30,10 @@ info:
     timeout: 10000
 - assertVisible: "Nama Barang *"
 - assertVisible: "Kode Barang (SKU) *"
-- assertVisible: "Simpan Barang"
+- assertVisible: "Simpan"
 
 # 1. Validasi error form kosong
-- tapOn: "Simpan Barang"
+- tapOn: "Simpan"
 - assertVisible: "Nama barang wajib diisi"
 
 # 2. Input data barang baru
@@ -55,7 +55,7 @@ info:
 - hideKeyboard
 
 # 3. Simpan barang
-- tapOn: "Simpan Barang"
+- tapOn: "Simpan"
 
 # Verifikasi berhasil kembali ke Dashboard
 - extendedWaitUntil:
